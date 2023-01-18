@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#wrap {width: 800px;}
+.container{padding:0px;}
+header{height: 80px; background-color: rgb(212, 212, 212);}
+footer{height: 80px;}
+
+/******** header *********/
+header{vertical-align: middle;}
+header h1{
+	font-size: 25pt;
+}
+header a{color:black; text-decoration-line: none;}
+header a:hover{color:black; text-decoration:none}
+header img{width: 25px;}
+header span{font-weight: bold;}
+
+/******** section *********/
+/*******로그인페이지*********/
+#loginBox{width: 450px;}
+#loginBox h3{font-weight: bold;}
+/*******회원가입페이지*********/
+#joinBox{width: 450px;}
+#joinBox h3{font-weight: bold;}
+.box-shadow{
+    box-shadow: 2px 2px 2px 2px rgb(212, 212, 212);
+    padding: 20px;
+}
+#idDnone{height: 15px;}
+.box-shadow label{margin: 0px;}
+.box-shadow>div{margin-bottom: 6px;}
+.box-shadow div div button {
+    font-size: 12px;
+    height: 28px;
+    width: 70px;
+    padding: 0px;
+}

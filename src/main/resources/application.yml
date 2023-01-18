@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sns_220919?characterEncoding=UTF-8
     username: root
-    password: marobiana
+    password: root
   mvc:
     static-path-pattern: /static/**
     view:
