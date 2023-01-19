@@ -12,7 +12,7 @@ header h1{
 }
 header a{color:black; text-decoration-line: none;}
 header a:hover{color:black; text-decoration:none}
-header img{width: 25px;}
+header img{width: 30px; height: 30px;}
 header span{font-weight: bold;}
 
 /******** section *********/
@@ -34,4 +34,11 @@ header span{font-weight: bold;}
     height: 28px;
     width: 70px;
     padding: 0px;
+}
+
+/**********TIMELINE************/
+.card .profile{width: 30px; height: 30px;}
+.profile {
+    border-radius: 70%;
+    object-fit: cover;
 }

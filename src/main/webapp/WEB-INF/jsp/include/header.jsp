@@ -11,7 +11,7 @@
 	<%-- 로그인 후 --%>
 	<c:if test="${not empty userId}">
 		<div class="mr-4">
-			<img src="${profileUrl}">
+			<img class="profile" src="${profileUrl}">
 			<span>${userName } 님</span>
 			<a href="/user/sign_out" class="ml-2 font-weight-bold">로그아웃</a>
 		</div>
