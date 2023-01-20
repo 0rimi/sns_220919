@@ -64,7 +64,7 @@
 				<div class="card-post m-3">
 					<div>
 						<img class="profile" alt="프로필이미지" src="">
-						<span class="font-weight-bold">응애 이름넣어줘</span>
+						<span class="font-weight-bold">응애이름넣어줘</span>
 					</div>
 					<span>${post.content}</span>
 				</div>
