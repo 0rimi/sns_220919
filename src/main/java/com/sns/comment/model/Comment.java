@@ -7,7 +7,7 @@ public class Comment {
 	//field
 	private int id;
 	private int postId;
-	private String userId;
+	private int userId;
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
@@ -32,11 +32,11 @@ public class Comment {
 		this.postId = postId;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

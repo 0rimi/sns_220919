@@ -24,4 +24,19 @@
 		)
 	</insert>
 	
+	<!-- 포스트id로 댓글들 가져오기 :select -->
+	<select id="selectCommentsByPostId" resultType="com.sns.comment.model.Comment">
+		SELECT
+			`id`
+			,`postId`
+			,`userId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`comment`
+		WHERE
+			`postId` = #{postId}
+	</select>
+	
 </mapper>

@@ -7,7 +7,7 @@ public class Post {
 	//field
 	//post
 	private int id;
-	private String userId;
+	private int userId;
 	private String content;
 	private String imgPath;
 	private Date createdAt;
@@ -21,10 +21,10 @@ public class Post {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getContent() {

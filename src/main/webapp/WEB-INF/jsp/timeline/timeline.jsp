@@ -32,14 +32,14 @@
 		<%-- 타임라인 영역 --%>
 		<div class="timeline-box my-5">
 			
-			<c:forEach var="post" items="${posts}" varStatus="status">
+			<c:forEach var="card" items="${cardList}" varStatus="status">
 			<%-- 카드1 --%>
 			<div class="card border rounded mt-3">
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
 					<div>
-						<img class="profile" alt="프로필이미지" src="">
-						<span class="font-weight-bold">응애이름넣어줘</span>
+						<img class="profile" alt="프로필이미지" src="${card.user.profileUrl}">
+						<span class="font-weight-bold">${card.user.name}</span>
 					</div>
 					<%-- 더보기 --%>
 					<a href="#" class="more-btn" data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}">
@@ -49,7 +49,7 @@
 
 				<%-- 카드 이미지 --%>
 				<div class="card-img">
-					<img src="${post.imgPath}" class="w-100" alt="본문 이미지">
+					<img src="${card.post.imgPath}" class="w-100" alt="본문 이미지">
 				</div>
 
 				<%-- 좋아요 --%>
@@ -63,10 +63,10 @@
 				<%-- 글 --%>
 				<div class="card-post m-3">
 					<div>
-						<img class="profile" alt="프로필이미지" src="">
-						<span class="font-weight-bold">응애이름넣어줘</span>
+						<img class="profile" alt="프로필이미지" src="${card.user.profileUrl}">
+						<span class="font-weight-bold">${card.user.name}</span>
 					</div>
-					<span>${post.content}</span>
+					<span>${card.post.content}</span>
 				</div>
 
 				<%-- 댓글 --%>
@@ -76,22 +76,26 @@
 
 				<%-- 댓글 목록 --%>
 				<div class="card-comment-list m-2">
+				
+					<c:forEach var="commentView" items="${card.commentViewList}" varStatus="status">
 					<div class="card-comment m-1">
-						<span class="font-weight-bold">댓글쓰니:</span>
-						<span>댓글 내용11111</span>
+						<img class="littleprofile" alt="프로필이미지" src="${commentView.user.profileUrl}">
+						<span class="font-weight-bold">${commentView.user.name} : </span>
+						<span>${commentView.comment.content}</span>
 
 						<%-- 댓글 삭제 버튼 --%>
 						<a href="#" class="commentDelBtn">
 							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
 						</a>
 					</div>
-
+					</c:forEach>
+					
 					<%-- 댓글 쓰기 --%>
 					<c:if test="${not empty userId}">
 					<div class="comment-write d-flex border-top mt-2">
 						<input type="text" class="form-control border-0 mr-2" placeholder="댓글 달기"/> 
 						<button type="button" class="comment-btn btn btn-light"
-						 data-user-id="${userId}" data-user-name="${userName}" data-post-id="${post.id}">게시</button>
+						 data-user-id="${userId}" data-user-name="${userName}" data-post-id="${card.post.id}">게시</button>
 					</div>
 					</c:if>
 				</div>

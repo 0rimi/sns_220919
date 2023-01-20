@@ -42,3 +42,8 @@ header span{font-weight: bold;}
     border-radius: 70%;
     object-fit: cover;
 }
+.littleprofile {
+	width: 25px; height: 25px;
+    border-radius: 70%;
+    object-fit: cover;
+}

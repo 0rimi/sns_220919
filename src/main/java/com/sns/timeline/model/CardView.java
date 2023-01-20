@@ -1,5 +1,8 @@
 package com.sns.timeline.model;
 
+import java.util.List;
+
+import com.sns.comment.model.CommentView;
 import com.sns.post.model.Post;
 import com.sns.user.model.User;
 
@@ -9,17 +12,18 @@ public class CardView {
 	//post
 	private Post post;
 	
+	//글쓴이
+	private User user;
+	
 	//comments
-	
-	
+	private CommentView commentView;
+	private List<CommentView> commentViewList;
 	//likes
 	
 	//사용자(로그인)가 좋아요를 눌렀는지(boolean)
 	
 	
 	//G&S
-	private User user;
-
 	public Post getPost() {
 		return post;
 	}
@@ -35,4 +39,32 @@ public class CardView {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+
+	public CommentView getCommentView() {
+		return commentView;
+	}
+
+	public void setCommentView(CommentView commentView) {
+		this.commentView = commentView;
+	}
+
+	public List<CommentView> getCommentViewList() {
+		return commentViewList;
+	}
+
+	public void setCommentViewList(List<CommentView> commentViewList) {
+		this.commentViewList = commentViewList;
+	}
+
+	@Override
+	public String toString() {
+		return "CardView [post=" + post + ", user=" + user + ", commentView=" + commentView + ", commentViewList="
+				+ commentViewList + "]";
+	}
+
+	
+	
+	
+	
 }
