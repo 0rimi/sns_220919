@@ -1,14 +1,14 @@
-package com.sns.timeline.dao;
+package com.sns.post.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.sns.timeline.model.Post;
+import com.sns.post.model.Post;
 
 @Repository
-public interface TimelineDAO {
+public interface PostDAO {
 	
 	//insert : POST upload
 	public int insertPost(

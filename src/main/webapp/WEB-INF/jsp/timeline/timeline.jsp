@@ -38,8 +38,8 @@
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
 					<div>
-						<img class="profile" src="${post.profileUrl}">
-						<span class="font-weight-bold">${post.name}</span>
+						<img class="profile" alt="프로필이미지" src="">
+						<span class="font-weight-bold">응애이름넣어줘</span>
 					</div>
 					<%-- 더보기 --%>
 					<a href="#" class="more-btn" data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}">
@@ -63,8 +63,8 @@
 				<%-- 글 --%>
 				<div class="card-post m-3">
 					<div>
-						<img class="profile" src="${post.profileUrl}">
-						<span class="font-weight-bold">${post.name}</span>
+						<img class="profile" alt="프로필이미지" src="">
+						<span class="font-weight-bold">응애 이름넣어줘</span>
 					</div>
 					<span>${post.content}</span>
 				</div>

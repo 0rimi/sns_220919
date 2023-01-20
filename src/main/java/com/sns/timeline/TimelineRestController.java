@@ -4,23 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sns.timeline.bo.TimelineBO;
+import com.sns.post.bo.PostBO;
 
 import jakarta.servlet.http.HttpSession;
-
-@RequestMapping("/post")
 @RestController
 public class TimelineRestController {
 	
 	@Autowired
-	private TimelineBO timelineBO;
+	private PostBO postBO;
 	
 	/**
 	 * 글 업로드
@@ -40,7 +36,7 @@ public class TimelineRestController {
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		
 		//DB INSERT: 해당 유저 넘버로 저장
-		int row = timelineBO.addPost(userId,userLoginId,content,file);
+		int row = postBO.addPost(userId,userLoginId,content,file);
 		
 		//result
 		Map<String,Object> result = new HashMap<>();

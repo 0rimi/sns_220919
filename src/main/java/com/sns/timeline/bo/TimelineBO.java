@@ -1,39 +1,30 @@
 package com.sns.timeline.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.sns.common.FileManagerService;
-import com.sns.timeline.dao.TimelineDAO;
-import com.sns.timeline.model.Post;
+import com.sns.post.bo.PostBO;
+import com.sns.timeline.model.CardView;
 
 @Service
 public class TimelineBO {
 	
 	@Autowired
-	private TimelineDAO timelineDAO;
+	private PostBO postBO;
 	
-	@Autowired
-	private FileManagerService fileManagerService;
 	
-	//포스트 업로드 insert
-	public int addPost(int userId, String userLoginId, String content,MultipartFile file) {
+	//포스트리스트(로그인이 되지 않아도 보여야함)
+	public List<CardView> generateCards(){
+		List<CardView> cardList = new ArrayList<>();
 		
-		//file > imgPath
-		String imgPath = null;
-		if(file != null) {	// 파일이 있으면,
-			imgPath = fileManagerService.saveFile(userLoginId, file);
-		}
+		//글목록
 		
-		return timelineDAO.insertPost(userId,content,imgPath);
-	}
-	
-	//포스트리스트
-	public List<Post> getPosts(){
-		return timelineDAO.selectPosts();
+		//postList 반복문 > CardView > CardList에 넣기
+		
+		return cardList;
 	}
 	
 }

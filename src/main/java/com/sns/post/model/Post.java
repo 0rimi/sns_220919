@@ -1,19 +1,17 @@
-package com.sns.timeline.model;
+package com.sns.post.model;
 
 import java.util.Date;
 
 public class Post {
 	
 	//field
+	//post
 	private int id;
 	private String userId;
 	private String content;
 	private String imgPath;
 	private Date createdAt;
 	private Date updatedAt;
-	
-	private String profileUrl;
-	private String name;
 	
 
 	//g&s
@@ -53,19 +51,6 @@ public class Post {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getProfileUrl() {
-		return profileUrl;
-	}
-	public void setProfileUrl(String profileUrl) {
-		this.profileUrl = profileUrl;
-	}
-	
 	
 	
 	@Override
