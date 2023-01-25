@@ -54,10 +54,20 @@
 
 				<%-- 좋아요 --%>
 				<div class="card-like mx-3 mt-3">
-					<a href="#" class="like-btn">
-					<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="18" height="18" alt="empty heart">
-						좋아요 10개
+					<%-- 좋아요가 되어있을때 --%>
+					<c:if test="${card.filledLike eq true}">
+					<a href="#" class="like-btn" data-user-id="${userId}" data-post-id="${card.post.id}">
+						<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="18" height="18" alt="empty heart">
+						좋아요 ${card.likeCnt}개
 					</a>
+					</c:if>
+					<%-- 좋아요가 해제 되어있을때 --%>
+					<c:if test="${card.filledLike eq false}">
+					<a href="#" class="like-btn" data-user-id="${userId}" data-post-id="${card.post.id}">
+						<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="18" height="18" alt="empty heart">
+						좋아요 ${card.likeCnt}개
+					</a>
+					</c:if>
 				</div>
 
 				<%-- 글 --%>
@@ -230,12 +240,39 @@
 				}				
 			});
 			
-		});
-		
-		
-		
+		});		
 		/////////댓글쓰기//////////////
-	
+		
+		/////////////좋아요////////////
+		// 좋아요/해제 toggle
+		$('.like-btn').on('click', function(e) {
+			e.preventDefault();
+			
+			let userId = $(this).data('user-id');
+			//alert(userId);
+			if (userId == '') {
+				alert("로그인을 해주세요");
+				return;
+			}
+			
+			let postId = $(this).data('post-id');
+			//alert(postId);
+			$.ajax({
+				url:"/like/" + postId
+				, success:function(data) {
+					if (data.code == 1) {
+						location.reload(true);
+					} else {
+						alert(data.errorMessage);	
+					}
+				}
+				, error: function(e) {
+					alert("좋아요/해제 하는데 실패했습니다.");
+				}
+			});
+		});
+		/////////////좋아요////////////
+		
 	
 	
 		

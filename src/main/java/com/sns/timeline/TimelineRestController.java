@@ -25,7 +25,7 @@ public class TimelineRestController {
 	 * @param session
 	 * @return
 	 */
-	@PostMapping("/create")
+	@PostMapping("/post/create")
 	public Map<String,Object> postCreate(
 			@RequestParam("writeText") String content,
 			@RequestParam("file") MultipartFile file,
