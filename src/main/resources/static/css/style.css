@@ -4,6 +4,8 @@
 .container{padding:0px;}
 header{height: 80px; background-color: rgb(212, 212, 212);}
 footer{height: 80px;}
+a{color:black; text-decoration-line: none;}
+a:hover{color:black; text-decoration:none;}
 
 /******** header *********/
 header{vertical-align: middle;}
@@ -11,7 +13,7 @@ header h1{
 	font-size: 25pt;
 }
 header a{color:black; text-decoration-line: none;}
-header a:hover{color:black; text-decoration:none}
+header a:hover{color:black; text-decoration:none;}
 header img{width: 30px; height: 30px;}
 header span{font-weight: bold;}
 

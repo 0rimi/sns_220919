@@ -29,6 +29,7 @@ public class CommentBO {
 	private List<Comment> getCommentsByPostId(int postId){
 		return commentDAO.selectCommentsByPostId(postId);
 	}
+	
 	//가져온 코멘트리스트에 사용자 정보 추가 commentView
 	public List<CommentView> generateCommentsByPostId(int postId){
 		
@@ -51,6 +52,11 @@ public class CommentBO {
 		}
 		
 		return commentViewList;
+	}
+	
+	//포스트 id별 코멘트 삭제
+	public void deleteCommentByPostId(int postId) {
+		commentDAO.deleteCommentByPostId(postId);
 	}
 	
 }

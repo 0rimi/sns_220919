@@ -19,4 +19,7 @@ public interface CommentDAO {
 	//댓글가져오기
 	public List<Comment> selectCommentsByPostId(int postId);
 	
+	//댓글삭제
+	public void deleteCommentByPostId(int postId);
+	
 }

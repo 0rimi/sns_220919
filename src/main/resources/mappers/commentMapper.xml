@@ -39,4 +39,13 @@
 			`postId` = #{postId}
 	</select>
 	
+	<!-- 포스트 id별 코멘트 삭제: delete -->
+	<delete id="deleteCommentByPostId" parameterType="int">
+		DELETE
+		FROM
+			`comment`
+		WHERE
+			`postId` = #{postId}
+	</delete>
+	
 </mapper>

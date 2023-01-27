@@ -58,4 +58,25 @@
 			`postId` = #{postId}
 			AND `userId` = #{userId}
 	</delete>
+	
+	<!-- select list by postId -->
+	<select id="selectLikeListByPostId" parameterType="int" resultType="com.sns.like.model.Like">
+		SELECT
+			`userId`
+ 			, `postId`
+ 			, `createdAt`
+		FROM
+			`like`
+		WHERE
+			 `postId` = #{postId}
+	</select>
+	
+	<!-- 포스트 id별 코멘트 삭제: delete -->
+	<delete id="deleteLikeByPostId" parameterType="int">
+		DELETE
+		FROM
+			`like`
+		WHERE
+			`postId` = #{postId}
+	</delete>
 </mapper>

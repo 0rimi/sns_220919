@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="d-flex justify-content-center">
 	<div class="contents-box">
 		
@@ -41,15 +42,28 @@
 						<img class="profile" alt="프로필이미지" src="${card.user.profileUrl}">
 						<span class="font-weight-bold">${card.user.name}</span>
 					</div>
-					<%-- 더보기 --%>
+					
+					<c:if test="${card.user.id eq userId}">
+					<%-- 더보기(내가 쓴 글 일때만 노출) --%>
 					<a href="#" class="more-btn" data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}">
 						<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="30">
 					</a>
+					</c:if>
+					
 				</div>
 
 				<%-- 카드 이미지 --%>
 				<div class="card-img">
-					<img src="${card.post.imgPath}" class="w-100" alt="본문 이미지">
+					<c:choose>
+						<c:when test="${fn:split(card.post.imgPath,'.')[1] ne 'mp4'}">
+							<img src="${card.post.imgPath}" class="w-100" alt="본문 이미지">	
+						</c:when>
+						<c:otherwise>
+							<video src="${card.post.imgPath}" controls autoplay muted class="w-100"></video>
+							<%--<c:out value="${card.post.imgPath}" />--%>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
 
 				<%-- 좋아요 --%>
@@ -120,6 +134,25 @@
 	</div>
 </div>
 
+<!-- ------------더보기 모달창-------------- -->
+<!-- Modal -->
+<div class="modal fade" id="modal" data-post-id="${card.post.id}">
+	<%-- modal-dialog-centered:모달 창을 수직으로 가운데 정렬 --%>
+  	<div class="modal-dialog modal-sm modal-dialog-centered">
+	    <div class="modal-content text-center">
+    		<div class="py-3 border-bottom">
+    			<a href="#" id="deletePostBtn">삭제하기</a>
+    		</div>
+    		<div class="py-3">
+    			<%--data-dismiss="modaㅣ" 모달창 닫힘 --%>
+    			<a href="#" data-dismiss="modal">취소하기</a>
+    		</div>
+    	</div>
+  	</div>
+</div>
+
+
+
 <script>
 
 	$(document).ready(function(){
@@ -138,7 +171,7 @@
 			
 			//확장자 유효성 확인
 			let ext = fileName.split('.').pop().toLowerCase();
-			if(ext != 'jpg' && ext != 'jpg' && ext != 'gif' && ext != 'png' && ext != 'jpeg'){
+			if(ext != 'jpg' && ext != 'jpg' && ext != 'gif' && ext != 'png' && ext != 'jpeg' && ext != 'mp4'){
 				alert('이미지 파일만 업로드 할 수 있습니다.');
 				$('#file').val("");
 				$('#fileName').text('');
@@ -273,7 +306,39 @@
 		});
 		/////////////좋아요////////////
 		
-	
+		//////////////더보기클릭(...)///////////////
+		$('.more-btn').on('click', function(e){
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			console.log("더보기 글번호 : ",postId);
+			
+			$('#modal').data('post-id',postId); //setting 모달 태그에 data-post-id를 심어 넣어줌
+			
+			//모달안에 있는 삭제하기 버튼 클릭
+			$('#modal #deletePostBtn').on('click',function(e){
+				e.preventDefault();
+				
+				let postId = $('#modal').data('post-id');
+				console.log('삭제글번호 : ',postId);
+				
+				$.ajax({
+					type:"DELETE"
+					,url:"/post/delete"
+					,data:{"postId":postId}
+					,success:function(data){
+						if(data.code == 1){
+							alert('포스트가 삭제되었습니다.');
+							location.reload(true);
+						}else{
+							alert(errorMessage);
+						}
+					},error:function(e){
+						console.log("포스트 삭제에 실패했습니다.");
+					}
+				});
+			});
+		});
 	
 		
 	});

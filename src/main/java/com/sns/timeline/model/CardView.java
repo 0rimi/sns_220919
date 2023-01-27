@@ -3,6 +3,7 @@ package com.sns.timeline.model;
 import java.util.List;
 
 import com.sns.comment.model.CommentView;
+import com.sns.like.model.Like;
 import com.sns.post.model.Post;
 import com.sns.user.model.User;
 
@@ -24,6 +25,7 @@ public class CardView {
 	
 	//likes
 	private int likeCnt;
+	private List<Like> likeList;
 	
 	//G&S
 	public Post getPost() {
@@ -72,8 +74,16 @@ public class CardView {
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
+	public List<Like> getLikeList() {
+		return likeList;
+	}
+
+	public void setLikeList(List<Like> likeList) {
+		this.likeList = likeList;
+	}
 
 	
+
 	@Override
 	public String toString() {
 		return "CardView [post=" + post + ", user=" + user + ", commentView=" + commentView + ", commentViewList="
