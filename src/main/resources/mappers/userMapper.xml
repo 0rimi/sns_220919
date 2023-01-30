@@ -20,6 +20,7 @@
 			,`password`
 			,`name`
 			,`email`
+			,`profileUrl`
 		)
 		VALUES
 		(
@@ -27,6 +28,7 @@
 			,#{password}
 			,#{name}
 			,#{email}
+			,'/static/img/user_icon.png'
 		)
 	</insert>
 	 

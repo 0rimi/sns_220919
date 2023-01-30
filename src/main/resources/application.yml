@@ -8,7 +8,7 @@ spring:
       max-request-size: 10MB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sns_220919?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3307/sns_220919?characterEncoding=UTF-8
     username: root
     password: root
   mvc:
